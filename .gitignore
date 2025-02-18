@@ -131,3 +131,4 @@ dist
 
 # environment file
 .env
+venv
