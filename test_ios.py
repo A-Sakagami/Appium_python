@@ -26,3 +26,5 @@ def ios_driver():
 
 def test_ios_launch(ios_driver):
     assert ios_driver.is_app_installed("com.apple.Preferences")
+    ios_driver.terminate_app("com.apple.Preferences")
+    assert ios_driver.query_app_state("com.apple.Preferences") == 1
