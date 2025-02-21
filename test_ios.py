@@ -10,8 +10,10 @@ import pytest
 def ios_driver():
     options = AppiumOptions()
     options.set_capability("platformName", "iOS")
-    options.set_capability("platformVersion", "16.0")
-    options.set_capability("deviceName", "iPhone 14 Pro Max")
+    # options.set_capability("platformVersion", "16.0")
+    options.set_capability("platformVersion", "18.3")
+    # options.set_capability("deviceName", "iPhone 14 Pro Max")
+    options.set_capability("deviceName", "iPhone 16 Pro Max")
     options.set_capability("automationName", "XCUITest")
     options.set_capability("bundleId", "com.apple.Preferences")
     options.set_capability("noReset", True)
