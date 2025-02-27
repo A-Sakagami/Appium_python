@@ -57,3 +57,5 @@ def test_google_play_open(driver):
     except Exception as e:
         pytest.fail(f"Test failed due to: {e}")
 
+if __name__ == "__main__":
+    pytest.main()

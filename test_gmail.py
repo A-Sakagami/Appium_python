@@ -1,6 +1,5 @@
 import pytest
 import time
-import unittest
 import os
 from dotenv import load_dotenv
 from appium import webdriver
@@ -100,6 +99,6 @@ def find_element_until_found(driver, by, value, timeout, interval):
             # 指定した間隔だけ待機して再試行
             time.sleep(interval)
 
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == "__main__":
+    pytest.main()
 
