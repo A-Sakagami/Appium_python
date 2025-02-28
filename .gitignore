@@ -132,3 +132,7 @@ dist
 # environment file
 .env
 venv
+
+# screenshots folder
+screenshots
+screenshots/*
