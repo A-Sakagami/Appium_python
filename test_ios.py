@@ -13,8 +13,8 @@ dotenv.load_dotenv()
 def ios_driver():
     options = XCUITestOptions()
     options.set_capability("platformName", "iOS")
-    # options.set_capability("platformVersion", "16.0")
     options.set_capability("platformVersion", "18.3")
+    # 同じ名前、バージョンのシミュレーターが複数ある場合は、UDID を指定して区別する
     options.set_capability("udid", os.getenv("DEVICE_ID"))
     options.set_capability("deviceName", "iPhone 16 Pro Max")
     options.set_capability("automationName", "XCUITest")
