@@ -3,19 +3,27 @@ from appium.options.ios import XCUITestOptions
 # remote_server_addr の設定方法が変更され、新しい ClientConfig を使用するよう推奨された 2025/2/18
 from selenium.webdriver.remote.remote_connection import RemoteConnection
 from appium import webdriver
+import os
+import dotenv
 import pytest
 
-@pytest.fixture(scope="module")
+dotenv.load_dotenv()
+
+@pytest.fixture(scope="session")
 def ios_driver():
     options = XCUITestOptions()
     options.set_capability("platformName", "iOS")
     # options.set_capability("platformVersion", "16.0")
     options.set_capability("platformVersion", "18.3")
-    # options.set_capability("deviceName", "iPhone 14 Pro Max")
+    options.set_capability("udid", os.getenv("DEVICE_ID"))
     options.set_capability("deviceName", "iPhone 16 Pro Max")
     options.set_capability("automationName", "XCUITest")
     options.set_capability("bundleId", "com.apple.Preferences")
     options.set_capability("noReset", True)
+
+    # WebDriverAgent のポートと IP を明示的に指定
+    options.set_capability("wdaBaseUrl", "http://192.168.10.103")  # ✅ WDA の正しいIPを設定
+    options.set_capability("wdaLocalPort", 8100)  # ✅ ポートは 8100 に固定
 
     driver = webdriver.Remote("http://localhost:4723", options=options)
 
