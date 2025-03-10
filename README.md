@@ -1,2 +1,2 @@
 ## About
-This repo is to study test automation to use appium & python.
+This repo is how to study test automation to use appium & python.
