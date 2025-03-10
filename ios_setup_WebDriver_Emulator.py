@@ -93,6 +93,11 @@ async def check_webdriver_agent(wda_url):
             try:
                 status = json.loads("".join(stdout))
                 print("✅ WebDriverAgent Status:", json.dumps(status, indent=2))
+                # 取得したwda_urlのipアドレスが環境変数と一致しているか確認
+                if(wda_url != os.getenv("WDA_SERVER_URL")):
+                    dotenv.set_key(".env", "WDA_SERVER_URL", wda_url)
+                    print("✅ Updated WDA_SERVER_URL in .env file")
+                    break
                 break  # 正常なレスポンスが返ってきたらループを抜ける
             except json.JSONDecodeError:
                 print("⚠️ Invalid response from WebDriverAgent:", stdout)

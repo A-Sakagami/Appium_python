@@ -22,7 +22,7 @@ def ios_driver():
     options.set_capability("noReset", True)
 
     # WebDriverAgent のポートと IP を明示的に指定
-    options.set_capability("wdaBaseUrl", "http://192.168.10.103")  # ✅ WDA の正しいIPを設定
+    options.set_capability("wdaBaseUrl", os.getenv("WDA_SERVER_URL"))  # ✅ WDA の正しいIPを設定
     options.set_capability("wdaLocalPort", 8100)  # ✅ ポートは 8100 に固定
 
     driver = webdriver.Remote("http://localhost:4723", options=options)
